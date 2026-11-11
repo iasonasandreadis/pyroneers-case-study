@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pyroneers FRC 10261 — Iasonas Andreadis</title>
+<meta name="description" content="Case study: how seven students in Athens built the first Greek robot to compete in the FIRST Robotics Competition, and what I did on the team.">
+<meta property="og:title" content="Pyroneers, FRC Team 10261: Greece's first FRC robot">
+<meta property="og:description" content="Seven students in Athens, two seasons, one Creativity Award. What we built and what I did.">
+<meta property="og:image" content="img/match.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f2efe8;
+  --paper-2:#e8e4da;
+  --ink:#16140f;
+  --ink-2:#4a463d;
+  --rule:#cfc9bb;
+  --grid:rgba(22,20,15,.055);
+  --flame:#d9361c;
+  --flame-ink:#b02a13;
+  --display:"Big Shoulders Display", "Arial Narrow", sans-serif;
+  --body:"IBM Plex Sans", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, monospace;
+  --wrap:1120px;
+  --gut:clamp(16px,4vw,40px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font:400 17px/1.6 var(--body);
+  background-image:
+    linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--flame-ink);text-underline-offset:3px}
+a:hover{color:var(--ink)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+.mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase}
+
+/* top strip */
+.strip{border-bottom:2px solid var(--ink);background:var(--paper)}
+.strip .wrap{display:flex;justify-content:space-between;gap:12px;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+.strip span{color:var(--ink-2)}
+
+/* hero */
+.hero{padding:clamp(36px,7vw,84px) 0 0}
+.tag{display:inline-block;background:var(--flame);color:#fff;padding:4px 10px;margin-bottom:22px}
+h1{
+  font-family:var(--display);font-weight:900;text-transform:uppercase;
+  font-size:clamp(2.5rem,6.4vw,5.2rem);line-height:.92;letter-spacing:-.005em;
+  margin:0 0 26px;max-width:21ch;
+}
+h1 em{font-style:normal;color:var(--flame)}
+.lede{font-size:clamp(1.05rem,1.8vw,1.25rem);max-width:58ch;margin:0 0 30px;color:var(--ink)}
+.hero-fig{margin:0;border:2px solid var(--ink);background:var(--ink)}
+.hero-fig img{width:100%;aspect-ratio:16/9;object-fit:cover}
+figcaption{font-family:var(--mono);font-size:.74rem;color:var(--ink-2);padding:8px 0 0;line-height:1.45}
+.hero-fig figcaption{background:var(--paper);padding:8px 0 0}
+
+/* key figures */
+.keys{display:grid;grid-template-columns:repeat(4,1fr);border:2px solid var(--ink);border-top:0;background:var(--paper)}
+.keys div{padding:16px 16px 18px;border-right:1px solid var(--rule)}
+.keys div:last-child{border-right:0}
+.keys b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(2rem,4.4vw,3rem);line-height:1}
+.keys span{display:block;margin-top:6px;font-size:.88rem;color:var(--ink-2);line-height:1.35}
+
+/* sections */
+section{padding:clamp(56px,8vw,96px) 0 0}
+.sec-head{display:grid;grid-template-columns:120px 1fr;gap:0 20px;align-items:baseline;border-top:2px solid var(--ink);padding-top:14px;margin-bottom:28px}
+.sec-head .num{font-family:var(--mono);color:var(--flame-ink);font-size:.9rem;white-space:nowrap}
+h2{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(2rem,4.6vw,3.2rem);line-height:.95;margin:0}
+h3{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:1.45rem;line-height:1.05;margin:0 0 8px;letter-spacing:.01em}
+.body{margin-left:140px;max-width:68ch}
+.body p{margin:0 0 1em}
+.wide{margin-left:140px}
+
+/* story */
+.hard{list-style:none;padding:0;margin:8px 0 0;border-top:1px solid var(--rule)}
+.hard li{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.hard li b{font-family:var(--mono);font-weight:500;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;padding-top:3px}
+
+/* robot */
+.robot{display:grid;grid-template-columns:1.25fr 1fr;gap:32px;align-items:start}
+.cad{margin:0;border:2px solid var(--ink);background:#000}
+.cad img{aspect-ratio:16/9;object-fit:cover;width:100%}
+.cad figcaption{background:var(--paper)}
+table.spec{width:100%;border-collapse:collapse;font-size:.95rem;background:var(--paper)}
+.spec caption{text-align:left;font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;padding:0 0 8px;color:var(--ink-2)}
+.spec th,.spec td{text-align:left;vertical-align:top;padding:9px 0;border-bottom:1px solid var(--rule)}
+.spec th{font-family:var(--mono);font-weight:500;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;width:38%;padding-right:12px;padding-top:11px}
+.spec tr:first-child th,.spec tr:first-child td{border-top:2px solid var(--ink)}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px}
+.gallery figure{margin:0}
+.gallery img{width:100%;aspect-ratio:3/4;object-fit:cover;border:2px solid var(--ink)}
+.gallery .land img{aspect-ratio:3/4}
+
+/* results */
+.events{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.event{border:2px solid var(--ink);background:var(--paper);padding:20px}
+.event.win{border-color:var(--flame);box-shadow:6px 6px 0 var(--flame)}
+.event .mono{color:var(--ink-2)}
+.event dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:14px 0 0}
+.event dt{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-2);padding-top:2px}
+.event dd{margin:0}
+.event .award{display:inline-block;background:var(--flame);color:#fff;font-weight:600;padding:2px 8px}
+.counts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:26px;border-top:2px solid var(--ink)}
+.counts div{padding:16px 16px 16px 0;border-bottom:1px solid var(--rule)}
+.counts b{display:block;font-family:var(--display);font-weight:900;font-size:2.4rem;line-height:1}
+.counts span{font-size:.9rem;color:var(--ink-2)}
+.est{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;background:var(--ink);color:var(--paper);padding:1px 5px;vertical-align:2px;margin-left:4px}
+.photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
+.photo-pair figure{margin:0}
+.photo-pair img{width:100%;aspect-ratio:3/2;object-fit:cover;border:2px solid var(--ink)}
+
+/* findings */
+.findings{list-style:none;counter-reset:f;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
+.findings li{counter-increment:f;padding:18px 0 20px;border-top:1px solid var(--rule)}
+.findings li::before{content:"F" counter(f,decimal-leading-zero);font-family:var(--mono);color:var(--flame-ink);font-size:.8rem;display:block;margin-bottom:6px}
+.findings p{margin:0}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--ink)}
+.tl li{position:relative;display:grid;grid-template-columns:150px 1fr;gap:16px;padding:0 0 22px 24px}
+.tl li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;background:var(--paper);border:2px solid var(--ink)}
+.tl li.key::before{background:var(--flame);border-color:var(--flame)}
+.tl time{font-family:var(--mono);font-size:.82rem;padding-top:2px}
+.tl p{margin:0}
+.tl .who{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-2);display:block;margin-top:2px}
+
+/* contributions */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--ink);background:var(--paper)}
+.split > div{padding:22px 24px 10px}
+.split > div:first-child{border-right:2px solid var(--ink);background:var(--paper-2)}
+.split ul{margin:0 0 14px;padding-left:1.1em}
+.split li{margin-bottom:8px}
+.split .note{font-size:.9rem;color:var(--ink-2);border-top:1px solid var(--rule);padding-top:12px;margin-top:4px}
+
+/* footer */
+footer{margin-top:clamp(64px,9vw,110px);border-top:2px solid var(--ink);background:var(--ink);color:var(--paper)}
+footer .wrap{padding-top:32px;padding-bottom:40px;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+footer h3{color:var(--paper)}
+footer a{color:#ffb4a3}
+footer a:hover{color:#fff}
+footer ul{list-style:none;padding:0;margin:0;font-size:.9rem}
+footer li{padding:5px 0;border-bottom:1px solid #3a372f}
+footer p{font-size:.9rem;margin:0 0 10px;color:#d6d1c4}
+
+@media (max-width:900px){
+  .body,.wide{margin-left:0}
+  .sec-head{grid-template-columns:1fr}
+  .sec-head .num{margin-bottom:4px}
+  .robot{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+  .keys{grid-template-columns:1fr 1fr}
+  .keys div:nth-child(2){border-right:0}
+  .keys div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .events,.findings,.split,.photo-pair,footer .wrap{grid-template-columns:1fr}
+  .split > div:first-child{border-right:0;border-bottom:2px solid var(--ink)}
+  .hard li,.tl li{grid-template-columns:1fr;gap:2px}
+  .counts{grid-template-columns:1fr 1fr}
+  .event.win{box-shadow:4px 4px 0 var(--flame)}
+  .split > div{padding:18px 16px 6px}
+}
+</style>
+</head>
+<body>
+
+<div class="strip"><div class="wrap mono"><strong>Pyroneers · FRC Team 10261 · Athens</strong><span>Case study by Iasonas (Jason) Andreadis</span></div></div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag mono">2024 – 2026 · First Greek team in FRC</span>
+    <h1>Seven students built Greece’s first <em>FRC robot</em> and won the Creativity Award at its first event.</h1>
+    <p class="lede">I’m Iasonas Andreadis. In July 2024, six friends and I started Pyroneers to bring the FIRST Robotics Competition to Greece. Our first robot, Hephaestus, won the Creativity Award at the Haliç Regional in Istanbul in March 2025. I worked on the code, the CAD and finding sponsors.</p>
+    <figure class="hero-fig">
+      <img src="img/match.jpg" width="1600" height="1066" alt="Robot 10261, with black flame-printed panels and blue bumpers, on the REEFSCAPE field during a match">
+    </figure>
+    <figcaption>Hephaestus on the REEFSCAPE field at the Haliç Regional, 2025. Photo: Pyroneers.</figcaption>
+    <div class="keys" role="list" style="margin-top:14px">
+      <div role="listitem"><b>1st</b><span>Greek team to compete in FRC</span></div>
+      <div role="listitem"><b>1</b><span>Creativity Award, Haliç Regional 2025</span></div>
+      <div role="listitem"><b>2</b><span>months to design, build and code the robot</span></div>
+      <div role="listitem"><b>€6K</b><span>robot cost, all raised from sponsors</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="story">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">01 / Story</span><h2>Why we started</h2></div>
+    <div class="body">
+      <p>Most of us met through FIRST LEGO League as kids. I was on the team that placed 2nd at the Western Edge FIRST LEGO League Open in California in 2023, and in 2024 I was on Greece’s national team at the FIRST Global Challenge in Athens.</p>
+      <p>The FIRST Robotics Competition is the biggest of the FIRST programs, but no Greek team had ever entered it. In the summer of 2024, seven of us decided to try. It wasn’t one person’s idea. We were friends first and a team second. The name started as a joke on “Pioneers”, with “pyro” for the spark, and our logo is a flame and a gear.</p>
+      <p>We started as an independent team, not a school club, with no big company behind us. Three adult coaches, aged 19 to 20, helped us: Antonis Lekkas, Vasilis Gkizas and Stathis Konstantinou. Our parents drove us, found materials and helped find space. Our families gave us a heated workshop. The 2025 game, REEFSCAPE, was announced in early January 2025, and we had two months to design, build and program the robot before Istanbul.</p>
+      <h3 style="margin-top:28px">What was hard</h3>
+      <ul class="hard">
+        <li><b>Money</b><span>No large company funded us. The robot cost about €6,000, and we raised all of it from three sponsors: RAFARM, ADAM C.S. and Cubitech. The Municipality of Kallithea also supported us.</span></li>
+        <li><b>Parts</b><span>We had limited access to FRC equipment and parts in Greece.</span></li>
+        <li><b>Units</b><span>FRC designs are in inches. We work in metric, so we had to convert them to centimetres.</span></li>
+        <li><b>Language</b><span>At the event we sometimes had to communicate with other teams by gestures.</span></li>
+        <li><b>Damage</b><span>Hephaestus is heavy and got damaged during the competition. We left Istanbul with a damaged robot and an award.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="robot">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02 / Robot</span><h2>Hephaestus, REEFSCAPE 2025</h2></div>
+    <div class="wide">
+      <div class="robot">
+        <div>
+          <figure class="cad">
+            <img src="img/cad.jpg" width="1600" height="900" alt="CAD render of the robot: square chassis with red bumpers, a vertical lift frame and an angled intake on top" loading="lazy">
+          </figure>
+          <figcaption>CAD of Hephaestus. The team designed every mechanism in Onshape to be modular, so the programmers could write code before the robot was finished.</figcaption>
+          <p style="margin:18px 0 0;max-width:60ch">The robot had four mechanisms: a swerve drivetrain, a custom lift, a passive intake and an outtake. The judges’ citation for the Creativity Award pointed to the intake, which was a simple, cheap solution.</p>
+        </div>
+        <table class="spec">
+          <caption>Spec sheet · team figures</caption>
+          <tr><th>Season</th><td>2025, REEFSCAPE</td></tr>
+          <tr><th>Build time</th><td>2 months</td></tr>
+          <tr><th>Cost</th><td>About €6,000</td></tr>
+          <tr><th>Weight</th><td>51 kg</td></tr>
+          <tr><th>Size</th><td>75 × 75 × 102 cm</td></tr>
+          <tr><th>Drivetrain</th><td>MAXSwerve</td></tr>
+          <tr><th>Mechanisms</th><td>Swerve drive, custom lift, passive intake, outtake</td></tr>
+          <tr><th>Motors (11)</th><td>4 NEO Vortex (drive) · 4 NEO 550 (swerve) · 2 CIM (lift) · 1 NEO (outtake)</td></tr>
+          <tr><th>Code</th><td>Java, WPILib</td></tr>
+          <tr><th>Vision</th><td>Raspberry Pi 5, Pi Camera v3, PhotonVision</td></tr>
+          <tr><th>CAD</th><td>Onshape</td></tr>
+        </table>
+      </div>
+
+      <div class="gallery">
+        <figure><img src="img/drill.jpg" width="1200" height="1600" alt="A team member drilling a metal part at a bench drill press in the workshop" loading="lazy"><figcaption>Making parts in the workshop.</figcaption></figure>
+        <figure><img src="img/build.jpg" width="1200" height="1600" alt="The partly built robot on sawhorses, showing the lift frame, chain and wiring" loading="lazy"><figcaption>Lift and wiring, mid-build.</figcaption></figure>
+        <figure class="land"><img src="img/code.jpg" width="1600" height="1200" alt="A team member at a laptop next to the drivetrain on a bench, running code" loading="lazy"><figcaption>Testing code on the drivetrain.</figcaption></figure>
+        <figure class="land"><img src="img/award.jpg" width="1600" height="1600" alt="The 2025 Creativity Award trophy and the Haliç Regional plaque in front of a Greek flag" loading="lazy"><figcaption>2025 Creativity Award, Haliç Regional.</figcaption></figure>
+      </div>
+      <p class="mono" style="color:var(--ink-2);margin-top:12px;text-transform:none;letter-spacing:0">Photos: Pyroneers team site.</p>
+    </div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">03 / Results</span><h2>By the numbers</h2></div>
+    <div class="wide">
+      <div class="events">
+        <article class="event win">
+          <div class="mono">Season 1 · 7–9 March 2025</div>
+          <h3 style="margin-top:6px">Haliç Regional, Istanbul</h3>
+          <dl>
+            <dt>Award</dt><dd><span class="award">Creativity Award</span><br><small>sponsored by Rockwell Automation</small></dd>
+            <dt>Rank</dt><dd>39 of 50 after qualification matches</dd>
+            <dt>Record</dt><dd>4 wins, 5 losses</dd>
+            <dt>Playoffs</dt><dd>Not selected</dd>
+          </dl>
+        </article>
+        <article class="event">
+          <div class="mono">Season 2 · 6–8 March 2026</div>
+          <h3 style="margin-top:6px">Bosphorus Regional</h3>
+          <dl>
+            <dt>Award</dt><dd>None</dd>
+            <dt>Rank</dt><dd>31 of 33 after qualification matches</dd>
+            <dt>Record</dt><dd>4 wins, 8 losses</dd>
+            <dt>Playoffs</dt><dd>Not selected</dd>
+          </dl>
+        </article>
+      </div>
+      <div class="counts">
+        <div><b>7</b><span>students on the 2025 team</span></div>
+        <div><b>3</b><span>adult coaches</span></div>
+        <div><b>2</b><span>seasons, 2 robots</span></div>
+        <div><b>21</b><span>official matches played (9 + 12)</span></div>
+        <div><b>3</b><span>sponsors, which paid for the robot</span></div>
+        <div><b>~10 h</b><span>a week I put in <span class="est">estimate</span></span></div>
+      </div>
+      <p style="font-size:.88rem;color:var(--ink-2);margin-top:12px;max-width:70ch">Match results and ranks are from FIRST’s official event records. Robot cost, weight and build time are the team’s own figures. Rankings come from matches played with randomly assigned alliance partners. The Creativity Award is a judged award.</p>
+      <div class="photo-pair">
+        <figure><img src="img/pit.jpg" width="1600" height="1066" alt="Team members in black flame jackets sitting on the floor of the pit around the robot, which has red bumpers marked 10261" loading="lazy"><figcaption>In the pit at competition.</figcaption></figure>
+        <figure><img src="img/team.jpg" width="1600" height="1066" alt="Team members in black Pyroneers shirts holding tools and a laptop beside toolboxes and a sawhorse" loading="lazy"><figcaption>The team with its tools.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="learned">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">04 / Findings</span><h2>What I learned</h2></div>
+    <ol class="findings wide">
+      <li><h3>Simple beat clever</h3><p>The judges singled out our passive intake because it was simple and cheap. With two months and €6,000, a mechanism with fewer parts to break was worth more to us than one that did more.</p></li>
+      <li><h3>Modular CAD saves weeks</h3><p>Because each mechanism was designed as its own module, the code could be written while the robot was still being built. With a two-month window, that let the code and the hardware move forward at the same time.</p></li>
+      <li><h3>Judged and played are different scores</h3><p>In 2025 we won a top judged award and ranked 39 of 50 in matches. In 2026 we ranked 31 of 33 and won nothing. Good design doesn’t automatically make a robot win matches, and I try not to describe one as the other.</p></li>
+      <li><h3>Money comes before metal</h3><p>Sponsors paid for every part of the robot. Finding them was part of the engineering work, because without them there was nothing to build.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">05 / Timeline</span><h2>How it went</h2></div>
+    <ol class="tl wide">
+      <li><time>May 2023</time><p>Western Edge FIRST LEGO League Open, Long Beach, California: 2nd overall and 2nd in the Robot Game with team iRobot.<span class="who">Before Pyroneers · my team</span></p></li>
+      <li><time>10 Mar 2024</time><p>FIRST Tech Challenge Greece, CENTERSTAGE season: Motivate Award (1st) and Design Award (2nd) with team 24966 Suited Penguins.<span class="who">Before Pyroneers · my team</span></p></li>
+      <li class="key"><time>Jul 2024</time><p>Seven of us start Pyroneers in Athens.</p></li>
+      <li><time>26–29 Sep 2024</time><p>FIRST Global Challenge in Athens. I compete on Greece’s national team.<span class="who">Me, separate from Pyroneers</span></p></li>
+      <li><time>9 Oct 2024</time><p>Ta Nea reports that Pyroneers is the first Greek team accepted into FRC.</p></li>
+      <li><time>Jan 2025</time><p>The REEFSCAPE game is announced. Two-month design and build begins.</p></li>
+      <li class="key"><time>7–9 Mar 2025</time><p>Haliç Regional, Istanbul. Greece’s first FRC event: Creativity Award, rank 39 of 50.</p></li>
+      <li><time>By May 2025</time><p>Team members meet the Minister of Digital Governance and the then Minister for Social Cohesion and Family to talk about funding and equipment for Greek robotics teams.</p></li>
+      <li><time>6–8 Mar 2026</time><p>Bosphorus Regional with our second robot: rank 31 of 33.</p></li>
+      <li><time>2026–27</time><p>I’m not competing this season, after two seasons on the team.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="contributions">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">06 / Credit</span><h2>What I did, what the team did</h2></div>
+    <div class="split wide">
+      <div>
+        <h3>What I did personally</h3>
+        <ul>
+          <li>Co-founded the team with six friends in July 2024. The idea was all of ours, not mine alone.</li>
+          <li>Worked on the robot code.</li>
+          <li>Worked on the CAD.</li>
+          <li>Helped find the team’s sponsors.</li>
+          <li>Competed with the team in both seasons, 2025 and 2026.</li>
+          <li>Put in about 10 hours a week <span class="est">estimate</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>What the team did</h3>
+        <ul>
+          <li>The students on the team designed, built, wired and programmed both robots together. Others worked on the code and CAD alongside me.</li>
+          <li>Three adult coaches, Antonis Lekkas, Vasilis Gkizas and Stathis Konstantinou, mentored us.</li>
+          <li>Our sponsors RAFARM, ADAM C.S. and Cubitech paid for the robot. The Municipality of Kallithea also supported us.</li>
+          <li>Our parents and families handled transport and materials and gave us a workshop.</li>
+        </ul>
+        <p class="note">The Creativity Award went to the whole team, not to me. I wasn’t on the FTC team that won Greece’s 2024 FTC championship, which some press about Pyroneers mentions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Sources</h3>
+      <ul>
+        <li><a href="https://frc-events.firstinspires.org/2025/team/10261">FIRST: Team 10261, 2025 results</a></li>
+        <li><a href="https://frc-events.firstinspires.org/2026/team/10261">FIRST: Team 10261, 2026 results</a></li>
+        <li><a href="https://www.pyroneersfrc.com/en/robot">Pyroneers: robot page</a></li>
+        <li><a href="https://www.tanea.gr/2024/10/09/greece/h-ellada-me-tous-pyroneers-sto-pagkosmio-protathlima-first-robotics-competition/">Ta Nea, 9 Oct 2024 (Greek)</a></li>
+        <li><a href="https://www.alfavita.gr/ekpaideysi/473687_pagkosmia-diakrisi-gia-elliniki-omada-rompotikis">Alfavita, 1 Apr 2025 (Greek)</a></li>
+        <li><a href="https://www.ekirikas.com/pyroneers-apo-mia-parea-filon-se-mia-protopora/">ΑΠΕ-ΜΠΕ via Ethnikos Kirykas, 19 May 2025 (Greek)</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Pyroneers</h3>
+      <p>FRC Team 10261, Athens, Greece.</p>
+      <ul>
+        <li><a href="https://www.pyroneersfrc.com/en">pyroneersfrc.com</a></li>
+        <li><a href="https://www.instagram.com/pyroneers_frc/">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/company/pyroneers">LinkedIn</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61565418630003">Facebook</a></li>
+      </ul>
+      <p style="margin-top:18px">Page by Iasonas Andreadis · <a href="https://www.linkedin.com/in/iasonas-andreadis-038b76330/">LinkedIn</a></p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
