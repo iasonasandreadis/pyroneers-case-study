@@ -119,6 +119,10 @@ table.spec{width:100%;border-collapse:collapse;font-size:.95rem;background:var(-
 .photo-pair figure{margin:0}
 .photo-pair img{width:100%;aspect-ratio:3/2;object-fit:cover;border:2px solid var(--ink)}
 
+.pinned{position:relative}
+.pin{position:absolute;left:88.8%;top:33%;transform:translate(-50%,-100%);background:var(--flame);color:#fff;font:600 .72rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px 4px;box-shadow:2px 2px 0 var(--ink);white-space:nowrap}
+.pin::after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--flame);border-bottom:0}
+
 /* findings */
 .findings{list-style:none;counter-reset:f;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
 .findings li{counter-increment:f;padding:18px 0 20px;border-top:1px solid var(--rule)}
@@ -291,7 +295,7 @@ footer p{font-size:.9rem;margin:0 0 10px;color:#d6d1c4}
       <p style="font-size:.88rem;color:var(--ink-2);margin-top:12px;max-width:70ch">Match results and ranks are from FIRST’s official event records. Robot cost, weight and build time are the team’s own figures. Rankings come from matches played with randomly assigned alliance partners. The Creativity Award is a judged award.</p>
       <div class="photo-pair">
         <figure><img src="img/pit.jpg" width="1600" height="1066" alt="Team members in black flame jackets sitting on the floor of the pit around the robot, which has red bumpers marked 10261" loading="lazy"><figcaption>In the pit at competition.</figcaption></figure>
-        <figure><img src="img/team.jpg" width="1600" height="1066" alt="Team members in black Pyroneers shirts holding tools and a laptop beside toolboxes and a sawhorse" loading="lazy"><figcaption>The team with its tools.</figcaption></figure>
+        <figure><div class="pinned"><img src="img/team.jpg" width="1600" height="1066" alt="Team members in black Pyroneers shirts holding tools and a laptop beside toolboxes and a sawhorse. I am on the far right, by the tool cart." loading="lazy"><span class="pin" aria-hidden="true">Me</span></div><figcaption>The team with its tools. I’m on the far right.</figcaption></figure>
       </div>
     </div>
   </div>
